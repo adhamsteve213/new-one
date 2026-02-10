@@ -109,7 +109,7 @@ export const deleteFolder = async (id) => {
     for (const img of imgRes.documents) {
       // delete from storage if uploaded
       if (img.storage_path) {
-        try { await storage.deleteFile(BUCKET_ID, img.storage_path); } catch {}
+        try { await storage.deleteFile(BUCKET_ID, img.storage_path); } catch (e) { console.warn('Failed to delete storage file:', e); }
       }
       await databases.deleteDocument(
         DATABASE_ID,
@@ -136,12 +136,6 @@ export const deleteFolder = async (id) => {
 
 export const uploadImages = async (folderId, files) => {
   try {
-    const existingRes = await databases.listDocuments(
-      DATABASE_ID,
-      IMAGES_COL,
-      [Query.equal('folder_id', folderId), Query.limit(500)]
-    );
-    const currentCount = existingRes.total;
     const newImages = [];
 
     for (let i = 0; i < files.length; i++) {
@@ -223,7 +217,7 @@ export const deleteImage = async (imageId) => {
     );
     // delete from storage if uploaded
     if (doc.storage_path) {
-      try { await storage.deleteFile(BUCKET_ID, doc.storage_path); } catch {}
+      try { await storage.deleteFile(BUCKET_ID, doc.storage_path); } catch (e) { console.warn('Failed to delete storage file:', e); }
     }
     // delete the document
     await databases.deleteDocument(

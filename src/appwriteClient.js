@@ -1,8 +1,8 @@
 import { Client, Account, Databases, Storage, ID, Query, Permission, Role } from 'appwrite';
 
 const client = new Client()
-  .setEndpoint("https://fra.cloud.appwrite.io/v1")
-  .setProject("698938440002ec765bee");
+  .setEndpoint(process.env.REACT_APP_APPWRITE_ENDPOINT || "https://fra.cloud.appwrite.io/v1")
+  .setProject(process.env.REACT_APP_APPWRITE_PROJECT || "698938440002ec765bee");
 
 const account = new Account(client);
 const databases = new Databases(client);

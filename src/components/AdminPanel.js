@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import * as db from '../dataStore';
 import './AdminPanel.css';
 
-const ADMIN_PASSWORD = 'adham2025';
+const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD || 'adham2025';
 
 const AdminPanel = ({ isOpen, onClose, language, translations }) => {
   const t = translations[language];
@@ -478,7 +478,7 @@ const AdminPanel = ({ isOpen, onClose, language, translations }) => {
                 </label>
                 {uploading && (
                   <span className="admin-uploading">
-                    <i className="fas fa-spinner fa-spin"></i> Uploading...
+                    <i className="fas fa-spinner fa-spin"></i> {t.uploading || 'Uploading...'}
                   </span>
                 )}
                 <button className="admin-url-btn" onClick={() => setShowUrlInput(!showUrlInput)}>

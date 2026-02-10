@@ -86,6 +86,8 @@ const translations = {
     addImage: 'Add Image',
     noImages: 'No images in this folder yet.',
     confirmDeleteImage: 'Delete this image?',
+    deleteImage: 'Delete Image',
+    uploading: 'Uploading...',
 
     // Admin Panel
     adminDashboard: 'Admin Dashboard',
@@ -232,6 +234,8 @@ const translations = {
     addImage: 'إضافة صورة',
     noImages: 'لا توجد صور في هذا المجلد بعد.',
     confirmDeleteImage: 'حذف هذه الصورة؟',
+    deleteImage: 'حذف الصورة',
+    uploading: 'جاري الرفع...',
 
     // Admin Panel
     adminDashboard: 'لوحة التحكم',

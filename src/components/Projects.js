@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import * as db from '../dataStore';
 import './Projects.css';
 
-const ADMIN_PASSWORD = 'adham2025';
+const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD || 'adham2025';
 
 const Projects = ({ language, translations }) => {
   const t = translations[language];
@@ -386,7 +386,7 @@ const Projects = ({ language, translations }) => {
                       disabled={uploading}
                     />
                   </label>
-                  {uploading && <span className="upload-spinner"><i className="fas fa-spinner fa-spin"></i> Uploading...</span>}
+                  {uploading && <span className="upload-spinner"><i className="fas fa-spinner fa-spin"></i> {t.uploading}</span>}
                   <button className="admin-add-btn url-add-btn" onClick={() => { setImageUrlInput(''); setShowImageModal(true); }}>
                     <i className="fas fa-link"></i> {t.addImageUrl}
                   </button>
@@ -414,7 +414,7 @@ const Projects = ({ language, translations }) => {
                         <button
                           className="image-remove-btn"
                           onClick={() => setDeleteImageIdx(idx)}
-                          title={t.deleteProject}
+                          title={t.deleteImage}
                         >
                           <i className="fas fa-trash-alt"></i>
                         </button>

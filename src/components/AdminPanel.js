@@ -478,7 +478,7 @@ const AdminPanel = ({ isOpen, onClose, language, translations }) => {
                 </label>
                 {uploading && (
                   <span className="admin-uploading">
-                    <i className="fas fa-spinner fa-spin"></i> {t.uploading || 'Uploading...'}
+                    <i className="fas fa-spinner fa-spin"></i> {t.uploading}
                   </span>
                 )}
                 <button className="admin-url-btn" onClick={() => setShowUrlInput(!showUrlInput)}>
